@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Link Generator</title>
+</head>
+<body>
+    <div style="max-width: 400px; margin: 100px auto; font-family: sans-serif; text-align: center; border: 1px solid #ddd; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h3 style="color: #ff1493;">Wedding Link Generator</h3>
+        <p style="font-size: 0.9rem; color: #666;">Enter the guest name below:</p>
+        
+        <input type="text" id="nameInput" placeholder="Enter Guest Name (e.g. Gopi)" style="padding: 12px; width: 85%; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+        
+        <button onclick="generate()" style="padding: 10px 20px; background: #ff1493; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 90%;">Generate Personalized Link</button>
+        
+        <div id="resultArea" style="display: none; margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee;">
+            <p style="font-size: 0.8rem; font-weight: bold; margin-bottom: 5px;">Copy this link for your guest:</p>
+            <p id="output" style="word-break: break-all; color: blue; font-size: 0.85rem; background: #f9f9f9; padding: 10px; border-radius: 5px;"></p>
+            
+            <button id="copyBtn" onclick="copyToClipboard()" style="margin-top: 10px; padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Copy Link</button>
+            <p id="copyStatus" style="font-size: 0.75rem; color: green; margin-top: 5px;"></p>
+        </div>
+    </div>
+
+    <script>
+        function generate() {
+            const name = document.getElementById('nameInput').value;
+            if (!name) { alert("Please enter a name"); return; }
+            
+            // This grabs your current website address and replaces 'admin.html' with 'index.html'
+            const currentUrl = window.location.href.replace('admin.html', 'index.html');
+            const finalLink = `${currentUrl}?to=${encodeURIComponent(name)}`;
+            
+            document.getElementById('output').innerText = finalLink;
+            document.getElementById('resultArea').style.display = 'block';
+            document.getElementById('copyStatus').innerText = "";
+        }
+
+        function copyToClipboard() {
+            const linkText = document.getElementById('output').innerText;
+            navigator.clipboard.writeText(linkText).then(() => {
+                document.getElementById('copyStatus').innerText = "Link copied successfully!";
+            });
+        }
+    </script>
+</body>
+</html>
