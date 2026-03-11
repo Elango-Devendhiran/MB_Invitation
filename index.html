@@ -105,18 +105,33 @@
         .quote-section h2 { font-size: 2.8rem; }
         .time-box span { font-size: 1.8rem; }
     }
+ /* Style for the new invitation text in entrance */
+.entrance-msg {
+    font-family: 'Great Vibes', cursive;
+    color: white;
+    font-size: 1.6rem; /* Adjust size to match your preference */
+    margin: 10px 0 20px 0;
+    line-height: 1.2;
+}
+
+/* Mobile adjustment for the message font size */
+@media (max-width: 767px) {
+    .entrance-msg {
+        font-size: 1.2rem;
+    }
+}       
 </style>
 </head>
 <body>
     <audio id="bgMusic" loop><source src="songbg.mp3" type="audio/mpeg"></audio>
 
     <div id="entrance">
-        <div id="guestName">Our Beloved Guest</div>
-        <p>We are getting married, and we want you to be part of our special day</p>
-        <div class="entrance-names">Bhavatharani & Murugan</div>
-        <br><br>
-        <button class="btn" onclick="openInvitation()">Open Invitation</button>
-    </div>
+    <div id="guestName">Our Beloved Guest</div>
+    <p class="entrance-msg">We are getting married, and we want you to be part of our special day</p>
+    <div class="entrance-names">Bhavatharani & Murugan</div>
+    <br><br>
+    <button class="btn" onclick="openInvitation()">Open Invitation</button>
+</div>
 
     <div class="main-content" id="mainBody" style="display:none;">
         <section id="title-banner" class="reveal">
@@ -240,6 +255,7 @@
 </body>
 
 </html>
+
 
 
 
